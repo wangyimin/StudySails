@@ -9,3 +9,16 @@
     <% }) %>
   </ul>
 </div>
+
+<!-- helper: http://sailsjs.com/documentation/reference/web-sockets/socket-client -->
+<script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">
+
+io.socket.get('/say/join/<%= p.id %>', function gotResponse(data, res) {
+  console.log('Status code is ' + res.statusCode + ' and response data is ', data);
+});
+
+io.socket.on('join', function (data) {
+  console.log('user[' + data.id + '] joined the room!');
+});
+</script>
