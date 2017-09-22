@@ -17,7 +17,8 @@ module.exports = {
          if (p === undefined) {
            return res.notFound();
          } else{
-           return res.json(p);
+           //return res.json(p);
+           return res.view('p/findById', {p:p, ps:[p]});
          }
     });
   },

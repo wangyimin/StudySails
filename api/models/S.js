@@ -1,22 +1,21 @@
 /**
- * P.js
+ * S.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  * @docs        :: https://github.com/balderdashy/waterline-docs/tree/master/models
 */
 /** CREATE SQL CLAUSE
-CREATE TABLE `p` (
+CREATE TABLE `s` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `sex` varchar(1) DEFAULT NULL,
-  `birthdate` datetime DEFAULT NULL,
+  `pid` int(11) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `score` int(3) NOT NULL,
   PRIMARY KEY (`id`)
 )
 */
 module.exports = {
-  tableName: 'p',
-
+  tableName: 's',
   attributes: {
     id: {
       type: 'integer',
@@ -24,26 +23,18 @@ module.exports = {
       unique: true
     },
 
-    name: {
+    course: {
       type: 'string',
-      columnName: 'name',
-      required: true
+      columnName: 'course',
     },
 
-    sex: {
-      type: 'string',
-      columnName: 'sex',
-      enum: ['M', 'F']
+    score: {
+      type: 'integer',
+      columnName: 'score',
     },
 
-    birthdate: {
-      type: 'date',
-      columnName: 'birthdate',
-    },
-
-    s: {
-      collection: 's',
-      via: 'pid'
+    pid: {
+      model: 'p'
     }
   }
 };
