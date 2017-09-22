@@ -1,0 +1,11 @@
+<div>
+  <h2><%= p.name %>'s personal information is,</h2>
+  <ul>
+    <!-- helper: https://lodash.com/docs/4.17.4 -->
+    <% _.each(ps, function (p) { %>
+    <li>id:<%= p.id %></li>
+    <li>sex:<%= p.sex %></li>
+    <li>birthdate:<%= p.birthdate %></li>
+    <% }) %>
+  </ul>
+</div>
