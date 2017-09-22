@@ -5,7 +5,7 @@
     <% _.each(ps, function (p) { %>
     <li>id:<%= p.id %></li>
     <li>sex:<%= p.sex %></li>
-    <li>birthdate:<%= p.birthdate %></li>
+    <li>birthdate:<%= moment(p.birthdate).format( 'YYYY-MM-DD') %></li>
     <% }) %>
   </ul>
 </div>

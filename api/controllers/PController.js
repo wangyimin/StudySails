@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  * @help        :: See https://github.com/balderdashy/waterline-docs/
  */
-
+var moment = require('moment');
 module.exports = {
 
   findById: function(req, res) {
@@ -18,7 +18,7 @@ module.exports = {
            return res.notFound();
          } else{
            //return res.json(p);
-           return res.view('p/findById', {p:p, ps:[p]});
+           return res.view('p/findById', {moment: moment, p:p, ps:[p]});
          }
     });
   },
