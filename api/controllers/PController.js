@@ -4,13 +4,16 @@
  * @description :: Server-side logic for managing ps
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  * @help        :: See https://github.com/balderdashy/waterline-docs/
+ * @help        :: See http://es6-features.org/
  */
 var moment = require('moment');// libaray for date type operation
 
 module.exports = {
 
   findById: (req, res) =>{     // arrow function (same as function(req, res))
+
     let id = req.param('id');  // block scope variable
+/*** demo source for db access directly
     P.findOne({id})            // property shorthand (same as {id:id})
        .exec((err, p) =>{
          if (err) { return res.serverError(err); }
@@ -21,6 +24,16 @@ module.exports = {
            //return res.json(p);
            return res.view('p/findById', {moment, p, ps:[p]});
          }
+    });
+***/
+/*** demo for db access by service indirectly ***/
+    PService.findById(id, (err, p)=>{
+      if (err) { return res.serverError(err); }
+      if (p === undefined) {
+        return res.notFound();
+      } else{
+        return res.view('p/findById', {moment, p, ps:[p]});
+      }
     });
   },
 
