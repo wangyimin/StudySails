@@ -5,13 +5,13 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  * @help        :: See https://github.com/balderdashy/waterline-docs/
  */
-var moment = require('moment');
+var moment = require('moment');// libaray for date type operation
 
 module.exports = {
 
-  findById: (req, res) =>{
-    let id = req.param('id');
-    P.findOne({id: id})
+  findById: (req, res) =>{     // arrow function (same as function(req, res))
+    let id = req.param('id');  // block scope variable
+    P.findOne({id})            // property shorthand (same as {id:id})
        .exec((err, p) =>{
          if (err) { return res.serverError(err); }
 
@@ -19,7 +19,7 @@ module.exports = {
            return res.notFound();
          } else{
            //return res.json(p);
-           return res.view('p/findById', {moment: moment, p:p, ps:[p]});
+           return res.view('p/findById', {moment, p, ps:[p]});
          }
     });
   },
