@@ -6,12 +6,13 @@
  * @help        :: See https://github.com/balderdashy/waterline-docs/
  */
 var moment = require('moment');
+
 module.exports = {
 
-  findById: function(req, res) {
-    var id = req.param('id');
+  findById: (req, res) =>{
+    let id = req.param('id');
     P.findOne({id: id})
-       .exec(function(err, p) {
+       .exec((err, p) =>{
          if (err) { return res.serverError(err); }
 
          if (p === undefined) {
@@ -23,26 +24,26 @@ module.exports = {
     });
   },
 
-  tag: function (req, res) {
+  tag: (req, res) =>{
     return res.json({
       todo: 'Unsupportable api.'
     });
   },
 
-  sql: function (req, res) {
-    var id = req.param('id') || 1;
+  sql: (req, res) =>{
+    let id = req.param('id') || 1;
 
-    P.query('SELECT * FROM p WHERE id = ?', [id], function(err, result) {
+    P.query('SELECT * FROM p WHERE id = ?', [id], (err, result) =>{
       if (err) { return res.serverError(err); }
       if (!result || !result.length) { return res.notFound(); }
 
 /*** sample for looping each item and customizing response text 
-      var data = [];
+      let data = [];
 
-      result.forEach(function(item, index) {
-        var o = {};
+      result.forEach((item, index) =>{
+        let o = {};
 
-        for (var key in item) {
+        for (let key in item) {
           o[key] = item[key];
         }
 
