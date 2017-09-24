@@ -20,7 +20,8 @@ module.exports = {
   attributes: {
     id: {
       type: 'number',
-      required: true,
+      autoIncrement: true,
+      //required: true,
       unique: true
     },
 
@@ -42,7 +43,7 @@ module.exports = {
       columnName: 'birthdate',
     },
 
-    s: {
+    ss: {
       collection: 's',
       via: 'pid'
     }

@@ -19,7 +19,8 @@ module.exports = {
   attributes: {
     id: {
       type: 'number',
-      required: true,
+      autoIncrement: true,
+      //required: true,
       unique: true
     },
 
@@ -36,6 +37,7 @@ module.exports = {
     pid: {
       model: 'p'
     }
+
   }
 };
 
